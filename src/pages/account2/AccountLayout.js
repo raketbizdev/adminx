@@ -28,6 +28,18 @@ const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Ele
         <>
             <div className="auth-fluid">
                 {/* Auth fluid left content */}
+                <div className="auth-fluid-right text-center">
+                    <div className="auth-user-testimonial">
+                        <h2 className="mb-3">{t('I love the color!')}</h2>
+                        <p className="lead">
+                            <i className="mdi mdi-format-quote-open"></i>{' '}
+                            {t("It's a elegent templete. I love it very much! .")}{' '}
+                            <i className="mdi mdi-format-quote-close"></i>
+                        </p>
+                        <p>{t('- Hyper Admin User')}</p>
+                    </div>
+                </div>
+                {/* Auth fluid right content */}
                 <div className="auth-fluid-form-box">
                     <div className="align-items-center d-flex h-100">
                         <Card.Body>
@@ -50,19 +62,6 @@ const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Ele
                             {/* footer links */}
                             {bottomLinks}
                         </Card.Body>
-                    </div>
-                </div>
-
-                {/* Auth fluid right content */}
-                <div className="auth-fluid-right text-center">
-                    <div className="auth-user-testimonial">
-                        <h2 className="mb-3">{t('I love the color!')}</h2>
-                        <p className="lead">
-                            <i className="mdi mdi-format-quote-open"></i>{' '}
-                            {t("It's a elegent templete. I love it very much! .")}{' '}
-                            <i className="mdi mdi-format-quote-close"></i>
-                        </p>
-                        <p>{t('- Hyper Admin User')}</p>
                     </div>
                 </div>
             </div>

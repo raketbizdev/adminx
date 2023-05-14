@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
-import classNames from 'classnames';
 
 import { getMenuItems } from '../helpers/menu';
 
@@ -14,7 +13,6 @@ import logoSm from '../assets/images/logo_sm.png';
 import logoDark from '../assets/images/logo-dark.png';
 import logoDarkSm from '../assets/images/logo_sm_dark.png';
 import logo from '../assets/images/logo-light.svg';
-import helpBoxImage from '../assets/images/help-icon.svg';
 import profileImg from '../assets/images/users/avatar-1.jpg';
 
 type SideBarContentProps = {
@@ -35,26 +33,6 @@ const SideBarContent = ({ hideUserProfile }: SideBarContentProps) => {
             )}
             <AppMenu menuItems={getMenuItems()} />
 
-            <div
-                className={classNames('help-box', 'text-center', {
-                    'text-white': hideUserProfile,
-                })}>
-                <Link to="/" className="float-end close-btn text-white">
-                    <i className="mdi mdi-close" />
-                </Link>
-
-                <img src={helpBoxImage} height="90" alt="Helper Icon" />
-                <h5 className="mt-3">Unlimited Access</h5>
-                <p className="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                <button
-                    className={classNames(
-                        'btn',
-                        'btn-sm',
-                        hideUserProfile ? 'btn-outline-light' : 'btn-outline-primary'
-                    )}>
-                    Upgrade
-                </button>
-            </div>
             <div className="clearfix" />
         </>
     );
