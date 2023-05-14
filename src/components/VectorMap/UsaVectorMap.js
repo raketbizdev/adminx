@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import 'jsvectormap';
 import 'jsvectormap/dist/maps/world.js';
 
@@ -12,7 +12,7 @@ type UsaVectorMapProps = {
     options?: any,
 };
 
-const UsaVectorMap = ({ width, height, options }: UsaVectorMapProps): React$Element<React$FragmentType> => {
+const UsaVectorMap = ({ width, height, options }: UsaVectorMapProps): React.Element<typeof React.Fragment> => {
     return (
         <>
             <BaseVectorMap width={width} height={height} options={options} type="us_merc_en" />

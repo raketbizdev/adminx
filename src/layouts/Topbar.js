@@ -21,7 +21,7 @@ import avatar1 from '../assets/images/users/avatar-2.jpg';
 import avatar2 from '../assets/images/users/avatar-4.jpg';
 import logoSmDark from '../assets/images/logo_sm_dark.png';
 import logoSmLight from '../assets/images/logo_sm.png';
-import logo from '../assets/images/logo-light.png';
+import logo from '../assets/images/logo-light.svg';
 
 //constants
 import * as layoutConstants from '../constants/layout';
