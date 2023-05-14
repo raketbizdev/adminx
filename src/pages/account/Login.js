@@ -97,7 +97,7 @@ const Login2 = (): React$Element<React$FragmentType> => {
                         name="password"
                         placeholder={t('Enter your password')}
                         containerClass={'mb-3'}>
-                        <Link to="/account/forget-password2" className="text-muted float-end">
+                        <Link to="/account/forget-password" className="text-muted float-end">
                             <small>{t('Forgot your password?')}</small>
                         </Link>
                     </FormInput>
