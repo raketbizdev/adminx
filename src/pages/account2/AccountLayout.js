@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // images
-import LogoLight from '../../assets/images/logo.png';
-import LogoDark from '../../assets/images/logo-dark.png';
+import LogoLight from '../../assets/images/logo-light.svg';
+import LogoDark from '../../assets/images/logo-dark.svg';
 
 type AccountLayoutProps = {
     bottomLinks?: React$Element<any>,
@@ -35,12 +35,12 @@ const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Ele
                             <div className="auth-brand text-center text-lg-start">
                                 <Link to="/" className="logo-dark">
                                     <span>
-                                        <img src={LogoDark} alt="" height="18" />
+                                        <img src={LogoDark} alt="" height="30" />
                                     </span>
                                 </Link>
                                 <Link to="/" className="logo-light">
                                     <span>
-                                        <img src={LogoLight} alt="" height="18" />
+                                        <img src={LogoLight} alt="" height="30" />
                                     </span>
                                 </Link>
                             </div>
