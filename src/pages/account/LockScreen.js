@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -19,20 +19,18 @@ const BottomLink = () => {
     const { t } = useTranslation();
 
     return (
-        <Row className="mt-3">
-            <Col className="text-center">
-                <p className="text-muted">
-                    {t('Not you? return')}{' '}
-                    <Link to={'/account/login'} className="text-muted ms-1">
-                        <b>{t('Sign In')}</b>
-                    </Link>
-                </p>
-            </Col>
-        </Row>
+        <footer className="footer footer-alt">
+            <p className="text-muted">
+                {t('Not you? return')}{' '}
+                <Link to={'/account/login2'} className="text-muted ms-1">
+                    <b>{t('Sign In')}</b>
+                </Link>
+            </p>
+        </footer>
     );
 };
 
-const LockScreen = (): React$Element<any> => {
+const LockScreen2 = (): React$Element<any> => {
     const { t } = useTranslation();
 
     /*
@@ -69,10 +67,37 @@ const LockScreen = (): React$Element<any> => {
                         containerClass={'mb-3'}
                     />
 
-                    <div className="mb-0 text-center">
+                    <div className="mb-0 text-center d-grid">
                         <Button variant="primary" type="submit">
-                            {t('Log In')}
+                            <i className="mdi mdi-login"></i> {t('Log In')}
                         </Button>
+                    </div>
+
+                    {/* social links */}
+                    <div className="text-center mt-4">
+                        <p className="text-muted font-16">{t('Authentication in with')}</p>
+                        <ul className="social-list list-inline mt-3">
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-primary text-primary">
+                                    <i className="mdi mdi-facebook"></i>
+                                </Link>
+                            </li>
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-danger text-danger">
+                                    <i className="mdi mdi-google"></i>
+                                </Link>
+                            </li>
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-info text-info">
+                                    <i className="mdi mdi-twitter"></i>
+                                </Link>
+                            </li>
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-secondary text-secondary">
+                                    <i className="mdi mdi-github"></i>
+                                </Link>
+                            </li>
+                        </ul>
                     </div>
                 </VerticalForm>
             </AccountLayout>
@@ -80,4 +105,4 @@ const LockScreen = (): React$Element<any> => {
     );
 };
 
-export default LockScreen;
+export default LockScreen2;

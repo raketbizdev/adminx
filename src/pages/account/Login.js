@@ -1,13 +1,13 @@
 // @flow
 import React, { useEffect } from 'react';
-import { Button, Alert, Row, Col } from 'react-bootstrap';
+import { Button, Alert } from 'react-bootstrap';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 
-//actions
+// actions
 import { resetAuth, loginUser } from '../../redux/actions';
 
 // components
@@ -15,25 +15,23 @@ import { VerticalForm, FormInput } from '../../components/';
 
 import AccountLayout from './AccountLayout';
 
-/* bottom link of account pages */
+/* bottom link */
 const BottomLink = () => {
     const { t } = useTranslation();
 
     return (
-        <Row className="mt-3">
-            <Col className="text-center">
-                <p className="text-muted">
-                    {t("Don't have an account?")}{' '}
-                    <Link to={'/account/register'} className="text-muted ms-1">
-                        <b>{t('Sign Up')}</b>
-                    </Link>
-                </p>
-            </Col>
-        </Row>
+        <footer className="footer footer-alt">
+            <p className="text-muted">
+                {t("Don't have an account?")}{' '}
+                <Link to={'/account/register2'} className="text-muted ms-1">
+                    <b>{t('Sign Up')}</b>
+                </Link>
+            </p>
+        </footer>
     );
 };
 
-const Login = (): React$Element<any> => {
+const Login2 = (): React$Element<React$FragmentType> => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
@@ -52,8 +50,8 @@ const Login = (): React$Element<any> => {
     }));
 
     /*
-    form validation schema
-    */
+     * form validation schema
+     */
     const schemaResolver = yupResolver(
         yup.object().shape({
             username: yup.string().required(t('Please enter Username')),
@@ -62,23 +60,19 @@ const Login = (): React$Element<any> => {
     );
 
     /*
-    handle form submission
-    */
+     * handle form submission
+     */
     const onSubmit = (formData) => {
         dispatch(loginUser(formData['username'], formData['password']));
     };
 
     return (
         <>
-            {(userLoggedIn || user) && <Navigate to={redirectUrl} replace />}
+            {(userLoggedIn || user) && <Navigate to={redirectUrl} />}
 
             <AccountLayout bottomLinks={<BottomLink />}>
-                <div className="text-center w-75 m-auto">
-                    <h4 className="text-dark-50 text-center mt-0 fw-bold">{t('Sign In')}</h4>
-                    <p className="text-muted mb-4">
-                        {t('Enter your email address and password to access admin panel.')}
-                    </p>
-                </div>
+                <h4 className="mt-0">{t('Sign In')}</h4>
+                <p className="text-muted mb-4">{t('Enter your email address and password to access account.')}</p>
 
                 {error && (
                     <Alert variant="danger" className="my-2">
@@ -103,15 +97,42 @@ const Login = (): React$Element<any> => {
                         name="password"
                         placeholder={t('Enter your password')}
                         containerClass={'mb-3'}>
-                        <Link to="/account/forget-password" className="text-muted float-end">
+                        <Link to="/account/forget-password2" className="text-muted float-end">
                             <small>{t('Forgot your password?')}</small>
                         </Link>
                     </FormInput>
 
-                    <div className="mb-3 mb-0 text-center">
+                    <div className="d-grid mb-0 text-center">
                         <Button variant="primary" type="submit" disabled={loading}>
-                            {t('Log In')}
+                            <i className="mdi mdi-login"></i> {t('Log In')}
                         </Button>
+                    </div>
+
+                    {/* social links */}
+                    <div className="text-center mt-4">
+                        <p className="text-muted font-16">{t('Sign in with')}</p>
+                        <ul className="social-list list-inline mt-3">
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-primary text-primary">
+                                    <i className="mdi mdi-facebook"></i>
+                                </Link>
+                            </li>
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-danger text-danger">
+                                    <i className="mdi mdi-google"></i>
+                                </Link>
+                            </li>
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-info text-info">
+                                    <i className="mdi mdi-twitter"></i>
+                                </Link>
+                            </li>
+                            <li className="list-inline-item">
+                                <Link to="#" className="social-list-item border-secondary text-secondary">
+                                    <i className="mdi mdi-github"></i>
+                                </Link>
+                            </li>
+                        </ul>
                     </div>
                 </VerticalForm>
             </AccountLayout>
@@ -119,4 +140,4 @@ const Login = (): React$Element<any> => {
     );
 };
 
-export default Login;
+export default Login2;

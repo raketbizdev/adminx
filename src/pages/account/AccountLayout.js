@@ -1,20 +1,19 @@
 // @flow
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // images
-import Logo from '../../assets/images/logo-light.svg';
+import LogoLight from '../../assets/images/logo-light.svg';
+import LogoDark from '../../assets/images/logo-dark.svg';
 
 type AccountLayoutProps = {
     bottomLinks?: React$Element<any>,
     children?: any,
 };
 
-const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Element<any> => {
-    const { t } = useTranslation();
-
+const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Element<React$FragmentType> => {
     useEffect(() => {
         if (document.body) document.body.classList.add('authentication-bg');
 
@@ -23,31 +22,49 @@ const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Ele
         };
     }, []);
 
+    const { t } = useTranslation();
+
     return (
         <>
-            <div className="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
-                <Container>
-                    <Row className="justify-content-center">
-                        <Col md={8} lg={6} xl={5} xxl={4}>
-                            <Card>
-                                {/* logo */}
-                                <Card.Header className="pt-4 pb-4 text-center bg-primary">
-                                    <Link to="/">
-                                        <span>
-                                            <img src={Logo} alt="" height="30" />
-                                        </span>
-                                    </Link>
-                                </Card.Header>
-                                <Card.Body className="p-4">{children}</Card.Body>
-                            </Card>
+            <div className="auth-fluid">
+                {/* Auth fluid left content */}
+                <div className="auth-fluid-right text-center">
+                    <div className="auth-user-testimonial">
+                        <h2 className="mb-3">{t('FREE Online Store Builder | eCommerce Made Easy')}</h2>
+                        <p className="lead">
+                            <i className="mdi mdi-format-quote-open"></i>{' '}
+                            {t('Driving Digital Transformation: Empowering Businesses to Achieve More')}{' '}
+                            <i className="mdi mdi-format-quote-close"></i>
+                        </p>
+                        <p>{t('- Prosperna Mission')}</p>
+                    </div>
+                </div>
+                {/* Auth fluid right content */}
+                <div className="auth-fluid-form-box">
+                    <div className="align-items-center d-flex h-100">
+                        <Card.Body>
+                            {/* logo */}
+                            <div className="auth-brand text-center text-lg-start">
+                                <Link to="/" className="logo-dark">
+                                    <span>
+                                        <img src={LogoDark} alt="" height="30" />
+                                    </span>
+                                </Link>
+                                <Link to="/" className="logo-light">
+                                    <span>
+                                        <img src={LogoLight} alt="" height="30" />
+                                    </span>
+                                </Link>
+                            </div>
 
-                            {/* bottom links */}
+                            {children}
+
+                            {/* footer links */}
                             {bottomLinks}
-                        </Col>
-                    </Row>
-                </Container>
+                        </Card.Body>
+                    </div>
+                </div>
             </div>
-            <footer className="footer footer-alt">{t('2018 - 2021 © Hyper - Coderthemes.com')}</footer>
         </>
     );
 };

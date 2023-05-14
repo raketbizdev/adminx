@@ -1,39 +1,36 @@
 // @flow
 import React, { useEffect } from 'react';
-import { Button, Alert, Row, Col } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
 
-//actions
+// actions
 import { resetAuth, forgotPassword } from '../../redux/actions';
 
 // components
-import { VerticalForm, FormInput } from '../../components/';
+import { VerticalForm, FormInput } from '../../components';
 
 import AccountLayout from './AccountLayout';
 
-/* bottom link */
 const BottomLink = () => {
     const { t } = useTranslation();
 
     return (
-        <Row className="mt-3">
-            <Col className="text-center">
-                <p className="text-muted">
-                    {t('Back to')}{' '}
-                    <Link to={'/account/login'} className="text-muted ms-1">
-                        <b>{t('Log In')}</b>
-                    </Link>
-                </p>
-            </Col>
-        </Row>
+        <footer className="footer footer-alt">
+            <p className="text-muted">
+                {t('Back to')}{' '}
+                <Link to={'/account/login2'} className="text-muted ms-1">
+                    <b>{t('Log In')}</b>
+                </Link>
+            </p>
+        </footer>
     );
 };
 
-const ForgetPassword = (): React$Element<any> => {
+const ForgetPassword2 = (): React$Element<React$FragmentType> => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
@@ -43,10 +40,9 @@ const ForgetPassword = (): React$Element<any> => {
 
     const { loading, passwordReset, resetPasswordSuccess, error } = useSelector((state) => ({
         loading: state.Auth.loading,
-        user: state.Auth.user,
+        resetPasswordSuccess: state.Auth.resetPasswordSuccess,
         error: state.Auth.error,
         passwordReset: state.Auth.passwordReset,
-        resetPasswordSuccess: state.Auth.resetPasswordSuccess,
     }));
 
     /*
@@ -68,14 +64,10 @@ const ForgetPassword = (): React$Element<any> => {
     return (
         <>
             <AccountLayout bottomLinks={<BottomLink />}>
-                <div className="text-center m-auto">
-                    <h4 className="text-dark-50 text-center mt-0 font-weight-bold">{t('Reset Password')}</h4>
-                    <p className="text-muted mb-4">
-                        {t(
-                            "Enter your email address and we'll send you an email with instructions to reset your password"
-                        )}
-                    </p>
-                </div>
+                <h4 className="mt-0">{t('Reset Password')}</h4>
+                <p className="text-muted mb-4">
+                    {t("Enter your email address and we'll send you an email with instructions to reset your password")}
+                </p>
 
                 {resetPasswordSuccess && <Alert variant="success">{resetPasswordSuccess.message}</Alert>}
 
@@ -95,9 +87,9 @@ const ForgetPassword = (): React$Element<any> => {
                             containerClass={'mb-3'}
                         />
 
-                        <div className="mb-3 mb-0 text-center">
+                        <div className="mb-0 text-center d-grid">
                             <Button variant="primary" type="submit" disabled={loading}>
-                                {t('Submit')}
+                                <i className="mdi mdi-lock-reset"></i> {t('Reset Password')}
                             </Button>
                         </div>
                     </VerticalForm>
@@ -107,4 +99,4 @@ const ForgetPassword = (): React$Element<any> => {
     );
 };
 
-export default ForgetPassword;
+export default ForgetPassword2;
