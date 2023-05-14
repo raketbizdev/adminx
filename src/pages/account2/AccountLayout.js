@@ -30,13 +30,13 @@ const AccountLayout = ({ bottomLinks, children }: AccountLayoutProps): React$Ele
                 {/* Auth fluid left content */}
                 <div className="auth-fluid-right text-center">
                     <div className="auth-user-testimonial">
-                        <h2 className="mb-3">{t('I love the color!')}</h2>
+                        <h2 className="mb-3">{t('FREE Online Store Builder | eCommerce Made Easy')}</h2>
                         <p className="lead">
                             <i className="mdi mdi-format-quote-open"></i>{' '}
-                            {t("It's a elegent templete. I love it very much! .")}{' '}
+                            {t('Driving Digital Transformation: Empowering Businesses to Achieve More')}{' '}
                             <i className="mdi mdi-format-quote-close"></i>
                         </p>
-                        <p>{t('- Hyper Admin User')}</p>
+                        <p>{t('- Prosperna Mission')}</p>
                     </div>
                 </div>
                 {/* Auth fluid right content */}
